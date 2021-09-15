@@ -94,7 +94,7 @@ M.plugin_status = {
    neoformat = true, -- universal formatter
    neoscroll = true, -- smooth scroll
    telescope_media = false, -- see media files in telescope picker
-   truezen = false, -- no distraction mode for nvim
+   truezen = true, -- no distraction mode for nvim
    vim_fugitive = false, -- git in nvim
    vim_matchup = true, -- % magic, match it but improved
 }

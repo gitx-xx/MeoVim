@@ -343,4 +343,36 @@ return packer.startup(function()
          require("core.mappings").vim_fugitive()
       end,
    }
+   use {
+      "tpope/vim-fugitive",
+      disable = not plugin_status.vim_fugitive,
+      setup = function()
+         require("core.mappings").vim_fugitive()
+      end,
+   }
+
+   -- PLugins
+
+  use {'rhysd/clever-f.vim', event = "BufRead"}
+  use {
+    'phaazon/hop.nvim',
+    config = function()
+      require('hop').setup({
+        keys = 'sadfjklewcmpgh'
+      })
+    end,
+    event = 'VimEnter'
+  }
+  use {
+    'mhinz/vim-startify', config = function()
+      require "plugins.configs.startify"
+    end,
+    cmd = {'Startify'}
+  }
+  use {'kdheepak/lazygit.nvim', cmd = 'LazyGit'}
+  
+
+
+
+
 end)

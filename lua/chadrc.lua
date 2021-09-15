@@ -5,26 +5,19 @@ M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
 
 -- non plugin ui configs, available without any plugins
 M.ui = {
-   italic_comments = false,
-
-   -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
-   theme = "onedark",
-
-   -- theme toggler, toggle between two themes, see theme_toggleer mappings
+   italic_comments = true,
+   theme = "onedark", -- use leader+th to see alternatives
+   -- theme toggler, activate with leader+tt
    theme_toggler = {
       enabled = false,
       fav_themes = {
          "onedark",
-         "gruvchad",
+         "one-light",
       },
    },
-
-   -- Enable this only if your terminal has the colorscheme set which nvchad uses
-   -- For Ex : if you have onedark set in nvchad , set onedark's bg color on your terminal
-   transparency = false,
+   transparency = true,
 }
 
--- plugin related ui options
 M.ui.plugin = {
    -- statusline related options
    statusline = {
@@ -49,17 +42,20 @@ M.options = {
    insert_nav = true, -- navigation in insertmode
    mapleader = " ",
    mouse = "a",
-   number = true,
-   -- relative numbers in normal mode tool at the bottom of options.lua
+   number = false,
    numberwidth = 2,
+   relativenumber = false,
    permanent_undo = true,
    shiftwidth = 2,
    smartindent = true,
    tabstop = 8, -- Number of spaces that a <Tab> in the file counts for
-   timeoutlen = 400,
-   relativenumber = false,
+   timeoutlen = 450,
    ruler = false,
-   updatetime = 250,
+   updatetime = 400,
+   scrolloff = 999,
+   sidescrolloff = 0,
+   smartcase = true,
+   shortmess = "I",
    -- used for updater
    update_url = "https://github.com/NvChad/NvChad",
    update_branch = "main",
@@ -87,10 +83,10 @@ M.plugin_status = {
    lspkind = true, -- lsp enhancements
    lspsignature = true, -- lsp enhancements
    neoformat = true, -- universal formatter
-   neoscroll = true, -- smooth scroll
+   neoscroll = false, -- smooth scroll
    telescope_media = false, -- see media files in telescope picker
-   truezen = false, -- no distraction mode for nvim
-   vim_fugitive = false, -- git in nvim
+   -- truezen = true, -- no distraction mode for nvim
+   -- vim_fugitive = true, -- git in nvim
    vim_matchup = true, -- % magic, match it but improved
 }
 
@@ -100,7 +96,6 @@ M.mappings = {
    -- close current focused buffer
    close_buffer = "<leader>x",
    copy_whole_file = "<C-a>", -- copy all contents of the current buffer
-
    -- navigation in insert mode, only if enabled in options
    insert_nav = {
       backward = "<C-h>",
@@ -110,7 +105,6 @@ M.mappings = {
       prev_line = "<C-j>",
       top_of_line = "<C-a>",
    },
-
    line_number_toggle = "<leader>n", -- show or hide line number
    new_buffer = "<S-t>", -- open a new buffer
    new_tab = "<C-t>b", -- open a new vim tab
@@ -127,12 +121,10 @@ M.mappings = {
       esc_hide_termmode = { "JK" }, -- multiple mappings allowed
       -- show hidden terminal buffers in a telescope picker
       pick_term = "<leader>W",
-      -- below three are for spawning terminals
       new_horizontal = "<leader>h",
       new_vertical = "<leader>v",
       new_window = "<leader>w",
    },
-
    -- update nvchad from nvchad, chadness 101
    update_nvchad = "<leader>uu",
 }
@@ -177,10 +169,8 @@ M.mappings.plugin = {
       buffers = "<leader>fb",
       find_files = "<leader>ff",
       git_commits = "<leader>cm",
-      git_status = "<leader>gt",
+      git_status = "<leader>fg",
       help_tags = "<leader>fh",
-      live_grep = "<leader>fw",
-      oldfiles = "<leader>fo",
       themes = "<leader>th",
    },
    telescope_media = {
@@ -208,11 +198,26 @@ M.mappings.plugin = {
 -- cmd:  for vim commands, must use ':' at start and add <CR> at the end if want to execute
 -- options: see :h nvim_set_keymap() opts section
 M.custom.mappings = {
-   -- clear_all = {
-   --    "n",
-   --    "<leader>cc",
-   --    "gg0vG$d",
-   -- },
+  -- {"n", " ", "<NOP>"}, -- disable space
+  {"", 'B', '^'}, -- beginning of line
+  {"", 'E', '$'}, -- end of line
+  {"n", 'M', '`'}, -- bookmark
+  {{"n", "v"}, "J", "12j"}, -- faster vertical movement
+  {{"n", "v"}, "K", "12k"}, -- faster verstical movement
+  -- better intenting
+  {"v", ">", ">gv"},
+  {"v", "<", "<gv"},
+  -- buffers
+  {"n", "H", ":BufferLineCyclePrev<CR>"}, -- prev buffer
+  {"n", "L", ":BufferLineCycleNext<CR>"}, -- next buffer
+  {"n", "<C-b>", ":e #<CR>"}, -- ?
+  {"n", "<M-b>", ":BufferLinePick<CR>"}, -- pick buffer
+  {"n", "§", "<C-^>"}, -- toggle buffer
+  {"n", "<M-q>", ":CommentToggle<CR>"}, -- toggle line
+  {"v", "<M-q>", ":CommentToggle<CR>gv"}, -- toggle block
+  {"n", "S", ":HopPattern<CR>"}, -- toggle block
+  {"n", "s", ":HopChar2<CR>"}, -- toggle block
+  {"n", "<leader>h", ":Startify<CR>"},
 }
 
 return M
