@@ -18,7 +18,7 @@ true_zen.setup {
       left = {
          number = false,
          relativenumber = false,
-         signcolumn = "no",
+         signcolumn = "yes",
       },
    },
    modes = {
@@ -32,6 +32,7 @@ true_zen.setup {
          keep_default_fold_fillchars = true,
          custome_bg = "",
          bg_configuration = true,
+         quit = "close",
          affected_higroups = {
             NonText = {},
             FoldColumn = {},

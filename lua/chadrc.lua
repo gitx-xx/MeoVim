@@ -56,6 +56,7 @@ M.options = {
    sidescrolloff = 0,
    smartcase = true,
    shortmess = "I",
+   linebreak = true,
    -- used for updater
    update_url = "https://github.com/NvChad/NvChad",
    update_branch = "main",
@@ -71,14 +72,14 @@ M.options.plugin = {
 -- enable and disable plugins (false for disable)
 M.plugin_status = {
    autosave = false, -- to autosave files
-   blankline = true, -- beautified blank lines
+   blankline = false, -- beautified blank lines
    bufferline = true, -- buffer shown as tabs
    cheatsheet = true, -- fuzzy search your commands/keymappings
    colorizer = true,
    comment = true, -- universal commentor
    dashboard = false, -- a nice looking dashboard
    esc_insertmode = true, -- escape from insert mode using custom keys
-   feline = true, -- statusline
+   feline = false, -- statusline
    gitsigns = true, -- gitsigns in statusline
    lspkind = true, -- lsp enhancements
    lspsignature = true, -- lsp enhancements
@@ -160,7 +161,7 @@ M.mappings.plugin = {
       esc_insertmode = { "jk" }, -- multiple mappings allowed
    },
    nvimtree = {
-      toggle = "<C-n>", -- file manager
+      toggle = {"<C-n>", "<leader>e"}, -- file manager
    },
    neoformat = {
       format = "<leader>fm",
@@ -218,6 +219,12 @@ M.custom.mappings = {
   {"n", "S", ":HopPattern<CR>"}, -- toggle block
   {"n", "s", ":HopChar2<CR>"}, -- toggle block
   {"n", "<leader>h", ":Startify<CR>"},
+  {"n", "<leader>r", ":RnvimrToggle<CR>"}, -- ranger
+  {"n", "<M-w>", ":TZMinimalist<CR>"}, -- ranger
+  {"n", "<M-e>", ":TZAtaraxis<CR>"}, -- zenmode
+  {"n", "<leader>tn", ":setlocal number!<CR>"}, -- toggle number
+  {"n", "<leader>tw", ":setlocal wrap!<CR>"}, -- toggle wrap
+  {"n", "<leader>ts", ":setlocal spell!<CR>"}, -- toggle wrap
 }
 
 return M
