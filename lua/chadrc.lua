@@ -81,7 +81,6 @@ M.plugin_status = {
    esc_insertmode = true, -- escape from insert mode using custom keys
    feline = false, -- statusline
    gitsigns = true, -- gitsigns in statusline
-   lspkind = true, -- lsp enhancements
    lspsignature = true, -- lsp enhancements
    neoformat = true, -- universal formatter
    neoscroll = false, -- smooth scroll
@@ -225,6 +224,13 @@ M.custom.mappings = {
   {"n", "<leader>tn", ":setlocal number!<CR>"}, -- toggle number
   {"n", "<leader>tw", ":setlocal wrap!<CR>"}, -- toggle wrap
   {"n", "<leader>ts", ":setlocal spell!<CR>"}, -- toggle wrap
+}
+
+M.plugins = {
+   lspconfig = {
+      -- servers = {"html", "cssls"}
+      servers = {},
+   },
 }
 
 return M
