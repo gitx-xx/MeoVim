@@ -14,11 +14,12 @@ vim.g.startify_session_persistence = 0
   -- { 'type': 'files',     'header': ['   MRU']            },
 vim.g.startify_lists = {
   { type = 'files', header = { "   Recent" } },
-  { type = 'dir', header = { "   Current Directory "..vim.fn.getcwd()..":" } },
+  -- { type = 'dir', header = { "   Current Directory "..vim.fn.getcwd()..":" } },
   { type = 'bookmarks', header = { '   Bookmarks' } }
 }
 vim.g.startify_bookmarks = {
   { s = '~/.config/nvim/lua/chadrc.lua'},
+  { S = '~/.config/nvim/lua/plugins/configs/startify.lua'},
   { n = '~/notes/nvchad.md'},
   { c = '~/dev/tmp'},
   { r = '~/.config/ranger/rc.conf'},
