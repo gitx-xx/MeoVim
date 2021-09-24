@@ -21,3 +21,6 @@ vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 
 
 -- disbable wrap
 vim.cmd [[ autocmd Filetype * set nowrap linebreak ]]
+
+vim.cmd [[ autocmd VimEnter * TZAtaraxis ]]
+

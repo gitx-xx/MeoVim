@@ -1,5 +1,4 @@
 -- IMPORTANT NOTE : This is the user config, can be edited. Will be preserved if updated with internal updater
-
 local M = {}
 M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
 
@@ -212,7 +211,6 @@ M.custom.mappings = {
   {"n", "L", ":BufferLineCycleNext<CR>"}, -- next buffer
   {"n", "<C-b>", ":e #<CR>"}, -- ?
   {"n", "<M-b>", ":BufferLinePick<CR>"}, -- pick buffer
-  {"n", "§", "<C-^>"}, -- toggle buffer
   {"n", "<M-q>", ":CommentToggle<CR>"}, -- toggle line
   {"v", "<M-q>", ":CommentToggle<CR>gv"}, -- toggle block
   {"n", "S", ":HopPattern<CR>"}, -- toggle block
@@ -224,12 +222,14 @@ M.custom.mappings = {
   {"n", "<leader>tn", ":setlocal number!<CR>"}, -- toggle number
   {"n", "<leader>tw", ":setlocal wrap!<CR>"}, -- toggle wrap
   {"n", "<leader>ts", ":setlocal spell!<CR>"}, -- toggle wrap
+  {"n", "<leader>tm", ":TZMinimalist<CR>"}, -- toggle wrap
+  {{"n", "i"}, "<C-y>", "<esc>:%y<CR>"}, -- copy buffer
+  {"n", "<C-l>", ":nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>"}, -- better redraw
 }
 
 M.plugins = {
    lspconfig = {
-      -- servers = {"html", "cssls"}
-      servers = {},
+      servers = {"html", "cssls", "tsserver"}
    },
 }
 

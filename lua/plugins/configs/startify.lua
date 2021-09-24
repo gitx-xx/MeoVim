@@ -21,6 +21,7 @@ vim.g.startify_bookmarks = {
   { s = '~/.config/nvim/lua/chadrc.lua'},
   { S = '~/.config/nvim/lua/plugins/configs/startify.lua'},
   { n = '~/notes/nvchad.md'},
+  { d = '~/dev/MeoVim/demo.md'},
   { c = '~/dev/tmp'},
   { r = '~/.config/ranger/rc.conf'},
   { a = '~/.config/alacritty/alacritty.yml'},
