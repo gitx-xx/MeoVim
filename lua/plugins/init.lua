@@ -346,12 +346,10 @@ return packer.startup(function()
    }
 
    -- PLugins
-
   use {'rhysd/clever-f.vim', config = function()
       vim.g.clever_f_chars_match_any_signs = ';'
     end,
     event = "BufRead"}
-
   use {
     'phaazon/hop.nvim',
     config = function()
@@ -361,24 +359,20 @@ return packer.startup(function()
     end,
     event = 'VimEnter'
   }
-  
   use {
     'mhinz/vim-startify', config = function()
       require "plugins.configs.startify"
     end,
     cmd = {'Startify'}
   }
-
   use {'kdheepak/lazygit.nvim', cmd = 'LazyGit'}
   use {'kevinhwang91/rnvimr'}
   use {'tpope/vim-surround'}
-
   use {'tools-life/taskwiki', config = function()
      require "plugins.configs.taskwiki"
     end, 
     event='VimEnter'
   }
-
   use {'vimwiki/vimwiki', config = function()
     require "plugins.configs.vimwiki"
     end,
